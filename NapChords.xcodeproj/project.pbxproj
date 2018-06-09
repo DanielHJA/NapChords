@@ -16,6 +16,11 @@
 		7B2AB4A520CC3BFC001AE012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AB4A320CC3BFC001AE012 /* LaunchScreen.storyboard */; };
 		7B2AB4B020CC3BFC001AE012 /* NapChordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4AF20CC3BFC001AE012 /* NapChordsTests.swift */; };
 		7B2AB4BB20CC3BFC001AE012 /* NapChordsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4BA20CC3BFC001AE012 /* NapChordsUITests.swift */; };
+		7B2AB4C920CC3E55001AE012 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4C820CC3E55001AE012 /* WebService.swift */; };
+		7B2AB4CB20CC3E71001AE012 /* MusicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CA20CC3E71001AE012 /* MusicObject.swift */; };
+		7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */; };
+		7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CE20CC3E93001AE012 /* Extensions.swift */; };
+		7B2AB4D120CC3E9B001AE012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4D020CC3E9B001AE012 /* Constants.swift */; };
 		8BD4F23526B66D452A640ADB /* Pods_NapChords.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A622BBFB0D87D4A02FEB7BA3 /* Pods_NapChords.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +58,11 @@
 		7B2AB4B620CC3BFC001AE012 /* NapChordsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapChordsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2AB4BA20CC3BFC001AE012 /* NapChordsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapChordsUITests.swift; sourceTree = "<group>"; };
 		7B2AB4BC20CC3BFC001AE012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B2AB4C820CC3E55001AE012 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		7B2AB4CA20CC3E71001AE012 /* MusicObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicObject.swift; sourceTree = "<group>"; };
+		7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordObject.swift; sourceTree = "<group>"; };
+		7B2AB4CE20CC3E93001AE012 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7B2AB4D020CC3E9B001AE012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		817B0ED26E6DD24EE39E62AD /* Pods-NapChordsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapChordsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapChordsUITests/Pods-NapChordsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A622BBFB0D87D4A02FEB7BA3 /* Pods_NapChords.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChords.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B776FBCABBB2F6F6C192C178 /* Pods_NapChordsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChordsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */,
-				7B2AB49C20CC3BFC001AE012 /* ViewController.swift */,
+				7B2AB4D420CC3F72001AE012 /* Controllers */,
+				7B2AB4D320CC3EC2001AE012 /* Objects */,
+				7B2AB4D220CC3EB6001AE012 /* Helpers */,
 				7B2AB49E20CC3BFC001AE012 /* Main.storyboard */,
 				7B2AB4A120CC3BFC001AE012 /* Assets.xcassets */,
 				7B2AB4A320CC3BFC001AE012 /* LaunchScreen.storyboard */,
@@ -163,6 +175,33 @@
 				7B2AB4BC20CC3BFC001AE012 /* Info.plist */,
 			);
 			path = NapChordsUITests;
+			sourceTree = "<group>";
+		};
+		7B2AB4D220CC3EB6001AE012 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AB4C820CC3E55001AE012 /* WebService.swift */,
+				7B2AB4CE20CC3E93001AE012 /* Extensions.swift */,
+				7B2AB4D020CC3E9B001AE012 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7B2AB4D320CC3EC2001AE012 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */,
+				7B2AB4CA20CC3E71001AE012 /* MusicObject.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		7B2AB4D420CC3F72001AE012 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AB49C20CC3BFC001AE012 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +499,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2AB4CB20CC3E71001AE012 /* MusicObject.swift in Sources */,
+				7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */,
+				7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */,
+				7B2AB4C920CC3E55001AE012 /* WebService.swift in Sources */,
+				7B2AB4D120CC3E9B001AE012 /* Constants.swift in Sources */,
 				7B2AB49D20CC3BFC001AE012 /* ViewController.swift in Sources */,
 				7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */,
 			);
