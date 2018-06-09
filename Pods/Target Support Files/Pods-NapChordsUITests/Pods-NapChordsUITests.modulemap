@@ -1,0 +1,6 @@
+framework module Pods_NapChordsUITests {
+  umbrella header "Pods-NapChordsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
