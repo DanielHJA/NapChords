@@ -8,12 +8,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UITabBarController {
+    
+    private var searchViewController: UINavigationController {
+        let temp = UINavigationController(rootViewController: SearchViewController())
+        temp.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "tabbar_search"), tag: 0)
+        return temp
+    }
+    
+    private var savedViewController: UINavigationController {
+        let temp = UINavigationController(rootViewController: SavedViewController())
+        temp.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(named: "tabbar_saved"), tag: 1)
+        return temp
+    }
+    
+    private var settingsViewController: UINavigationController {
+        let temp = UINavigationController(rootViewController: SettingsViewController())
+        temp.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "tabbar_settings"), tag: 2)
+        return temp
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
+        let tabs = [searchViewController, savedViewController, settingsViewController]
+        tabBar.barTintColor = UIColor.black
+        viewControllers = tabs
+        title = "Title"
     }
 
     override func didReceiveMemoryWarning() {

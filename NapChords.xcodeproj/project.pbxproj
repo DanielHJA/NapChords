@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3FFD6CF7DD1175B7E68CAAC4 /* Pods_NapChordsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B776FBCABBB2F6F6C192C178 /* Pods_NapChordsUITests.framework */; };
 		4A096E8F39A1A81B9B8C1538 /* Pods_NapChordsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */; };
+		7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1210C120CDF31B007FF366 /* CustomViewController.swift */; };
 		7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */; };
 		7B2AB49D20CC3BFC001AE012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB49C20CC3BFC001AE012 /* ViewController.swift */; };
 		7B2AB4A020CC3BFC001AE012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AB49E20CC3BFC001AE012 /* Main.storyboard */; };
@@ -21,6 +22,11 @@
 		7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */; };
 		7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CE20CC3E93001AE012 /* Extensions.swift */; };
 		7B2AB4D120CC3E9B001AE012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4D020CC3E9B001AE012 /* Constants.swift */; };
+		7B56FB5E20CD7B3B00B595B1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB5D20CD7B3B00B595B1 /* SearchViewController.swift */; };
+		7B56FB6020CD7B6500B595B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB5F20CD7B6500B595B1 /* SettingsViewController.swift */; };
+		7B56FB6220CD7B7800B595B1 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB6120CD7B7800B595B1 /* SavedViewController.swift */; };
+		7B56FB6520CD8B5E00B595B1 /* ChordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB6420CD8B5E00B595B1 /* ChordsTableViewCell.swift */; };
+		7B56FB6720CD90B400B595B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB6620CD90B400B595B1 /* DetailViewController.swift */; };
 		8BD4F23526B66D452A640ADB /* Pods_NapChords.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A622BBFB0D87D4A02FEB7BA3 /* Pods_NapChords.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +51,7 @@
 		1328475EB8412B8EA6736BCC /* Pods-NapChordsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapChordsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NapChordsTests/Pods-NapChordsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C08D362AE69B390AD8F9FB3 /* Pods-NapChords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapChords.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapChords/Pods-NapChords.release.xcconfig"; sourceTree = "<group>"; };
 		680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChordsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B1210C120CDF31B007FF366 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7B2AB49720CC3BFC001AE012 /* NapChords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NapChords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B2AB49C20CC3BFC001AE012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +70,11 @@
 		7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordObject.swift; sourceTree = "<group>"; };
 		7B2AB4CE20CC3E93001AE012 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B2AB4D020CC3E9B001AE012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7B56FB5D20CD7B3B00B595B1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7B56FB5F20CD7B6500B595B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7B56FB6120CD7B7800B595B1 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		7B56FB6420CD8B5E00B595B1 /* ChordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsTableViewCell.swift; sourceTree = "<group>"; };
+		7B56FB6620CD90B400B595B1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		817B0ED26E6DD24EE39E62AD /* Pods-NapChordsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapChordsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapChordsUITests/Pods-NapChordsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A622BBFB0D87D4A02FEB7BA3 /* Pods_NapChords.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChords.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B776FBCABBB2F6F6C192C178 /* Pods_NapChordsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChordsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */,
+				7B56FB6320CD8B3600B595B1 /* Cells */,
 				7B2AB4D420CC3F72001AE012 /* Controllers */,
 				7B2AB4D320CC3EC2001AE012 /* Objects */,
 				7B2AB4D220CC3EB6001AE012 /* Helpers */,
@@ -200,8 +213,21 @@
 			isa = PBXGroup;
 			children = (
 				7B2AB49C20CC3BFC001AE012 /* ViewController.swift */,
+				7B1210C120CDF31B007FF366 /* CustomViewController.swift */,
+				7B56FB5D20CD7B3B00B595B1 /* SearchViewController.swift */,
+				7B56FB5F20CD7B6500B595B1 /* SettingsViewController.swift */,
+				7B56FB6620CD90B400B595B1 /* DetailViewController.swift */,
+				7B56FB6120CD7B7800B595B1 /* SavedViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7B56FB6320CD8B3600B595B1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7B56FB6420CD8B5E00B595B1 /* ChordsTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,13 +525,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B56FB6520CD8B5E00B595B1 /* ChordsTableViewCell.swift in Sources */,
 				7B2AB4CB20CC3E71001AE012 /* MusicObject.swift in Sources */,
 				7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */,
+				7B56FB6720CD90B400B595B1 /* DetailViewController.swift in Sources */,
+				7B56FB5E20CD7B3B00B595B1 /* SearchViewController.swift in Sources */,
 				7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */,
+				7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */,
 				7B2AB4C920CC3E55001AE012 /* WebService.swift in Sources */,
 				7B2AB4D120CC3E9B001AE012 /* Constants.swift in Sources */,
 				7B2AB49D20CC3BFC001AE012 /* ViewController.swift in Sources */,
 				7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */,
+				7B56FB6220CD7B7800B595B1 /* SavedViewController.swift in Sources */,
+				7B56FB6020CD7B6500B595B1 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

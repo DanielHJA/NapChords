@@ -22,6 +22,10 @@ struct Constants {
         static let playRoot: String = "https://www.youtube.com/watch?v="
     }
 
+    struct Cells {
+        static let chordsCell = "chordsCell"
+    }
+    
 }
 
 enum CustomError: CustomStringConvertible {
