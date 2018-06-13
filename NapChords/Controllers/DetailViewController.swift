@@ -14,29 +14,17 @@ class DetailViewController: UIViewController {
     var item: ChordObject?
     private var isFullScreen: Bool = false
     
-    private lazy var webView: WKWebView = {
-        let temp = WKWebView()
-        temp.allowsBackForwardNavigationGestures = false
-        temp.backgroundColor = UIColor.gray
-        view.addSubview(temp)
-        temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        temp.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        temp.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        return temp
-    }()
-    
-    private lazy var customView: UITextView = {
+    private lazy var textView: UITextView = {
         let temp = UITextView()
         temp.textColor = UIColor.black
-        temp.backgroundColor = UIColor.lightGray
+        temp.isSelectable = false
+        temp.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 90, right: 10)
         temp.text = "test text"
         view.addSubview(temp)
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         temp.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         temp.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        temp.heightAnchor.constraint(equalToConstant: view.bounds.size.height / 2).isActive = true
         return temp
     }()
     
@@ -47,12 +35,12 @@ class DetailViewController: UIViewController {
         return temp
     }()
     
-    private lazy var webViewHeightConstraint: NSLayoutConstraint = {
-        let temp = webView.heightAnchor.constraint(equalToConstant: view.bounds.size.height / 2)
+    private lazy var textViewHeightConstraint: NSLayoutConstraint = {
+        let temp = textView.heightAnchor.constraint(equalToConstant: view.bounds.size.height / 2)
         temp.isActive = true
         return temp
     }()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -61,12 +49,11 @@ class DetailViewController: UIViewController {
             return
         }
         
-       // customView.text = item.body
-        webView.loadHTMLString(item.bodyHTML, baseURL: nil)
+        textView.attributedText = item.body.highlightBracketedText()
+        view.addConstraint(textViewHeightConstraint)
+        textView.addGestureRecognizer(doubleTapRecognizer)
         navigationController?.hidesBarsOnSwipe = false
         tabBarController?.tabBar.isHidden = true
-        view.addConstraint(webViewHeightConstraint)
-        webView.addGestureRecognizer(doubleTapRecognizer)
         title = item.title
     }
     
@@ -75,12 +62,12 @@ class DetailViewController: UIViewController {
        
         if isFullScreen {
             animator.addAnimations {
-                self.webViewHeightConstraint.constant = self.view.bounds.height / 2
+                self.textViewHeightConstraint.constant = self.view.bounds.height / 2
                 self.view.layoutIfNeeded()
             }
         } else {
             animator.addAnimations {
-                self.webViewHeightConstraint.constant = self.view.bounds.height
+                self.textViewHeightConstraint.constant = self.view.bounds.height
                 self.view.layoutIfNeeded()
             }
         }

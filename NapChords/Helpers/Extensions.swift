@@ -12,6 +12,19 @@ extension String {
     func URLEncode() -> String {
         return self.replacingOccurrences(of: " ", with: "%20")
     }
+    
+    func highlightBracketedText() -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: self)
+        let pattern = "\\[.*?\\]"
+        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        let results = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.count))
+        let resultRanges = results!.map { $0.range }
+        
+        for range in resultRanges {
+            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.blue , range: range)
+        }
+        return attributedString
+    }
 }
 
 extension Data {

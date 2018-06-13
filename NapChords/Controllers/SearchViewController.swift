@@ -87,6 +87,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailViewController()
         vc.item = items[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }
