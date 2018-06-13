@@ -34,3 +34,21 @@ extension Data {
         return nil
     }
 }
+
+extension UITableView {
+    
+    func reset() {
+        self.backgroundView = nil
+    }
+    
+    func displayEmptyMessage(_ message: CustomError) {
+        let temp = UILabel(frame: self.bounds)
+        temp.text = message.description
+        temp.textColor = UIColor.black
+        temp.numberOfLines = 0
+        temp.textAlignment = .center
+        temp.font = UIFont(name: "Helvetica", size: 17.0)
+        temp.sizeToFit()
+        self.backgroundView = temp
+    }
+}

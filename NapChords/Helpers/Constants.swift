@@ -29,13 +29,15 @@ struct Constants {
 }
 
 enum CustomError: CustomStringConvertible {
-    case serializingError, noResults
+    case serializingError, noResults, error
     var description: String {
         switch self {
         case .serializingError:
             return "Unable to serialize data"
         case .noResults:
             return "No results found"
+        case .error:
+            return "There was an error"
         }
     }
 }
