@@ -23,6 +23,7 @@
 		7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */; };
 		7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4CE20CC3E93001AE012 /* Extensions.swift */; };
 		7B2AB4D120CC3E9B001AE012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB4D020CC3E9B001AE012 /* Constants.swift */; };
+		7B51E04220D19E2400D498CE /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B51E04120D19E2400D498CE /* CustomTableView.swift */; };
 		7B56FB5E20CD7B3B00B595B1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB5D20CD7B3B00B595B1 /* SearchViewController.swift */; };
 		7B56FB6020CD7B6500B595B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB5F20CD7B6500B595B1 /* SettingsViewController.swift */; };
 		7B56FB6220CD7B7800B595B1 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56FB6120CD7B7800B595B1 /* SavedViewController.swift */; };
@@ -72,6 +73,7 @@
 		7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordObject.swift; sourceTree = "<group>"; };
 		7B2AB4CE20CC3E93001AE012 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B2AB4D020CC3E9B001AE012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7B51E04120D19E2400D498CE /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		7B56FB5D20CD7B3B00B595B1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7B56FB5F20CD7B6500B595B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7B56FB6120CD7B7800B595B1 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				7B2AB4C820CC3E55001AE012 /* WebService.swift */,
+				7B51E04120D19E2400D498CE /* CustomTableView.swift */,
 				7B2AB4CE20CC3E93001AE012 /* Extensions.swift */,
 				7B2AB4D020CC3E9B001AE012 /* Constants.swift */,
 			);
@@ -541,6 +544,7 @@
 				7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */,
 				7B56FB6720CD90B400B595B1 /* DetailViewController.swift in Sources */,
 				7B56FB5E20CD7B3B00B595B1 /* SearchViewController.swift in Sources */,
+				7B51E04220D19E2400D498CE /* CustomTableView.swift in Sources */,
 				7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */,
 				7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */,
 				7B2AB4C920CC3E55001AE012 /* WebService.swift in Sources */,

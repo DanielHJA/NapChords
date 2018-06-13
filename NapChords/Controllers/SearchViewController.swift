@@ -20,19 +20,11 @@ import UIKit
 class SearchViewController: CustomViewController {
     
     private var items: [ChordObject] = []
-    
-    private lazy var activityView: ActivityView = {
-        let temp = ActivityView()
-        temp.isLoading = true
-        temp.loadingMessage = "Searching..."
-        return temp
-    }()
 
-    private lazy var tableView: UITableView = {
-        let temp = UITableView()
+    private lazy var tableView: CustomTableView = {
+        let temp = CustomTableView()
         temp.delegate = self
         temp.dataSource = self
-        temp.tableFooterView = UIView()
         temp.register(ChordsTableViewCell.self, forCellReuseIdentifier: Constants.Cells.chordsCell)
         view.addSubview(temp)
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -103,8 +95,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, text.count > 0 else { return }
-        cleanTableView()
-        startLoading()
+        items = []
+        tableView.reset()
+        tableView.loading = true
 
         WebService.fetchChords(query: text, completion: { [weak self] (objects) in
             if objects.count < 1 {
@@ -113,32 +106,14 @@ extension SearchViewController: UISearchBarDelegate {
                 self?.items = objects
                 self?.tableView.reset()
             }
-            self?.stopLoading()
-            self?.tableView.reloadData()
+            self?.tableView.loading = false
         }) { (error) in
             print(error.description)
             self.tableView.reset()
-            self.stopLoading()
+            self.tableView.loading = false
             self.tableView.displayEmptyMessage(.error)
         }
     }
     
-    private func cleanTableView() {
-        items = []
-        tableView.reloadData()
-        tableView.reset()
-    }
-    
-    private func startLoading() {
-        tableView.insertSubview(activityView, at: 0)
-        activityView.translatesAutoresizingMaskIntoConstraints = false
-        activityView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-        activityView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-        activityView.isLoading = true
-    }
-    
-    private func stopLoading() {
-        activityView.isLoading = false
-        activityView.removeFromSuperview()
-    }
+
 }
