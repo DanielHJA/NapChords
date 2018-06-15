@@ -23,6 +23,7 @@ struct Constants {
     }
 
     struct Cells {
+        static let searchCell = "searchCell"
         static let chordsCell = "chordsCell"
     }
     

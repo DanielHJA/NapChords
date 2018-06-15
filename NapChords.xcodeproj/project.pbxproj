@@ -11,6 +11,9 @@
 		4A096E8F39A1A81B9B8C1538 /* Pods_NapChordsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */; };
 		7B09F22120D0786200D8CAA2 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09F22020D0786200D8CAA2 /* ActivityView.swift */; };
 		7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1210C120CDF31B007FF366 /* CustomViewController.swift */; };
+		7B16156620D42BD5008FA2C7 /* ChordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */; };
+		7B16156820D42D29008FA2C7 /* ChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */; };
+		7B16D51220D1EBC400B67455 /* SearchSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D51120D1EBC400B67455 /* SearchSwipeAction.swift */; };
 		7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */; };
 		7B2AB49D20CC3BFC001AE012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB49C20CC3BFC001AE012 /* ViewController.swift */; };
 		7B2AB4A020CC3BFC001AE012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AB49E20CC3BFC001AE012 /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 		680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChordsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B09F22020D0786200D8CAA2 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		7B1210C120CDF31B007FF366 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsViewController.swift; sourceTree = "<group>"; };
+		7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordCollectionViewCell.swift; sourceTree = "<group>"; };
+		7B16D51120D1EBC400B67455 /* SearchSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSwipeAction.swift; sourceTree = "<group>"; };
 		7B2AB49720CC3BFC001AE012 /* NapChords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NapChords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B2AB49C20CC3BFC001AE012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				7B09F22020D0786200D8CAA2 /* ActivityView.swift */,
+				7B16D51120D1EBC400B67455 /* SearchSwipeAction.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 				7B1210C120CDF31B007FF366 /* CustomViewController.swift */,
 				7B56FB5D20CD7B3B00B595B1 /* SearchViewController.swift */,
 				7B56FB5F20CD7B6500B595B1 /* SettingsViewController.swift */,
+				7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */,
 				7B56FB6620CD90B400B595B1 /* DetailViewController.swift */,
 				7B56FB6120CD7B7800B595B1 /* SavedViewController.swift */,
 			);
@@ -240,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				7B56FB6420CD8B5E00B595B1 /* ChordsTableViewCell.swift */,
+				7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -487,11 +496,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NapChords/Pods-NapChords-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B56FB6520CD8B5E00B595B1 /* ChordsTableViewCell.swift in Sources */,
+				7B16156820D42D29008FA2C7 /* ChordCollectionViewCell.swift in Sources */,
 				7B2AB4CB20CC3E71001AE012 /* MusicObject.swift in Sources */,
 				7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */,
 				7B56FB6720CD90B400B595B1 /* DetailViewController.swift in Sources */,
@@ -553,7 +565,9 @@
 				7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */,
 				7B09F22120D0786200D8CAA2 /* ActivityView.swift in Sources */,
 				7B56FB6220CD7B7800B595B1 /* SavedViewController.swift in Sources */,
+				7B16D51220D1EBC400B67455 /* SearchSwipeAction.swift in Sources */,
 				7B56FB6020CD7B6500B595B1 /* SettingsViewController.swift in Sources */,
+				7B16156620D42BD5008FA2C7 /* ChordsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

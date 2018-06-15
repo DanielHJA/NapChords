@@ -25,7 +25,7 @@ class SearchViewController: CustomViewController {
         let temp = CustomTableView()
         temp.delegate = self
         temp.dataSource = self
-        temp.register(ChordsTableViewCell.self, forCellReuseIdentifier: Constants.Cells.chordsCell)
+        temp.register(ChordsTableViewCell.self, forCellReuseIdentifier: Constants.Cells.searchCell)
         view.addSubview(temp)
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
@@ -75,7 +75,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.chordsCell, for: indexPath) as? ChordsTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.searchCell, for: indexPath) as? ChordsTableViewCell else { return UITableViewCell() }
         
         cell.setupCellWith(items[indexPath.row])
         
@@ -87,7 +87,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailViewController()
         vc.item = items[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let addRemoveAction = SearchSwipeAction(style: .normal, title: "") { (action, view, completion) in
+            print("Add / remove from database")
+        }
+        addRemoveAction.actionStyle = .add
         
+        return UISwipeActionsConfiguration(actions: [addRemoveAction])
     }
     
 }
@@ -115,6 +123,4 @@ extension SearchViewController: UISearchBarDelegate {
             self.tableView.displayEmptyMessage(.error)
         }
     }
-    
-
 }

@@ -14,12 +14,16 @@ class DetailViewController: UIViewController {
     var item: ChordObject?
     private var isFullScreen: Bool = false
     
+    private lazy var rightBarButtonItem: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addOrRemoveFavourite))
+    }()
+    
     private lazy var textView: UITextView = {
         let temp = UITextView()
         temp.textColor = UIColor.black
         temp.isSelectable = false
         temp.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 90, right: 10)
-        temp.text = "test text"
+        temp.addGestureRecognizer(doubleTapRecognizer)
         view.addSubview(temp)
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -35,6 +39,14 @@ class DetailViewController: UIViewController {
         return temp
     }()
     
+    private lazy var twoFingerTapRecognizer: UITapGestureRecognizer = {
+        let temp = UITapGestureRecognizer(target: self, action: #selector(loadChords))
+        temp.numberOfTapsRequired = 1
+        temp.numberOfTouchesRequired = 1
+        temp.delegate = self
+        return temp
+    }()
+    
     private lazy var textViewHeightConstraint: NSLayoutConstraint = {
         let temp = textView.heightAnchor.constraint(equalToConstant: view.bounds.size.height / 2)
         temp.isActive = true
@@ -43,18 +55,23 @@ class DetailViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         guard let item = item else {
             navigationController?.popViewController(animated: true)
             return
         }
         
-        textView.attributedText = item.body.highlightBracketedText()
-        view.addConstraint(textViewHeightConstraint)
-        textView.addGestureRecognizer(doubleTapRecognizer)
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        view.backgroundColor = UIColor.white
         navigationController?.hidesBarsOnSwipe = false
         tabBarController?.tabBar.isHidden = true
+        
         title = item.title
+
+        textView.attributedText = item.body.highlightBracketedText()
+        textView.scrollRectToVisible(CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), animated: false)
+        view.addConstraint(textViewHeightConstraint)
+        
+        textView.addGestureRecognizer(twoFingerTapRecognizer)
     }
     
     @objc private func makeFullscreen() {
@@ -74,6 +91,19 @@ class DetailViewController: UIViewController {
         
         isFullScreen = !isFullScreen
         animator.startAnimation()
+    }
+    
+    @objc private func loadChords() {
+        guard let item = item?.chords else { return }
+        let vc = ChordsViewController()
+        vc.items = item
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @objc private func addOrRemoveFavourite() {
+        // Add remove from realm
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
