@@ -17,6 +17,7 @@ class ChordsViewController: UIViewController {
         let temp = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         temp.dataSource = self
         temp.delegate = self
+        temp.allowsSelection = false
         temp.backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         temp.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         temp.register(ChordCollectionViewCell.self, forCellWithReuseIdentifier: Constants.Cells.chordsCell)
@@ -29,11 +30,23 @@ class ChordsViewController: UIViewController {
         return temp
     }()
     
+    private lazy var doubleTapRecognizer: UITapGestureRecognizer = {
+        let temp = UITapGestureRecognizer(target: self, action: #selector(close))
+        temp.numberOfTouchesRequired = 2
+        temp.numberOfTapsRequired = 2
+        return temp
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.isOpaque = false
         view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        view.addGestureRecognizer(doubleTapRecognizer)
         collectionView.reloadData()
+    }
+    
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -41,8 +41,8 @@ class DetailViewController: UIViewController {
     
     private lazy var twoFingerTapRecognizer: UITapGestureRecognizer = {
         let temp = UITapGestureRecognizer(target: self, action: #selector(loadChords))
-        temp.numberOfTapsRequired = 1
-        temp.numberOfTouchesRequired = 1
+        temp.numberOfTapsRequired = 2
+        temp.numberOfTouchesRequired = 2
         temp.delegate = self
         return temp
     }()

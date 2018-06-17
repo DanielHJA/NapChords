@@ -30,7 +30,7 @@ struct Constants {
 }
 
 enum CustomError: CustomStringConvertible {
-    case serializingError, noResults, error
+    case serializingError, noResults, error, noConnection
     var description: String {
         switch self {
         case .serializingError:
@@ -39,6 +39,8 @@ enum CustomError: CustomStringConvertible {
             return "No results found"
         case .error:
             return "There was an error"
+        case .noConnection:
+            return "Please check your internet connection"
         }
     }
 }

@@ -5,15 +5,6 @@
 //  Created by Daniel Hjärtström on 2018-06-10.
 //  Copyright © 2018 Daniel Hjärtström. All rights reserved.
 //
-/*
-navigationController?.barHideOnSwipeGestureRecognizer.addTarget(self, action: #selector(navBarHidden))
-
- private lazy var searchBarTopConstraint: NSLayoutConstraint = {
- let temp = searchBar.heightAnchor.constraint(equalToConstant: 55.0)
- temp.isActive = true
- return temp
- }()
- */
 
 import UIKit
 
@@ -52,6 +43,7 @@ class SearchViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.isHidden = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,7 +112,7 @@ extension SearchViewController: UISearchBarDelegate {
             print(error.description)
             self.tableView.reset()
             self.tableView.loading = false
-            self.tableView.displayEmptyMessage(.error)
+            self.tableView.displayEmptyMessage(error)
         }
     }
 }

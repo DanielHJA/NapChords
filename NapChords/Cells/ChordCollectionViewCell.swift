@@ -10,15 +10,29 @@ import UIKit
 
 class ChordCollectionViewCell: UICollectionViewCell {
     
+    private lazy var viewContent: UIView = {
+        let temp = UIView()
+        temp.backgroundColor = UIColor.white
+        temp.layer.cornerRadius = 15.0
+        temp.isHidden = true
+        addSubview(temp)
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        temp.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        temp.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8).isActive = true
+        temp.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
+        return temp
+    }()
+    
     private lazy var imageView: UIImageView = {
         let temp = UIImageView(image: nil)
         temp.contentMode = .scaleAspectFit
-        addSubview(temp)
+        viewContent.addSubview(temp)
         temp.translatesAutoresizingMaskIntoConstraints = false
-        temp.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        temp.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        temp.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        temp.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        temp.centerXAnchor.constraint(equalTo: viewContent.centerXAnchor).isActive = true
+        temp.centerYAnchor.constraint(equalTo: viewContent.centerYAnchor).isActive = true
+        temp.heightAnchor.constraint(equalTo: viewContent.heightAnchor, multiplier: 0.8).isActive = true
+        temp.widthAnchor.constraint(equalTo: viewContent.widthAnchor, multiplier: 0.8).isActive = true
         return temp
     }()
 
@@ -33,7 +47,8 @@ class ChordCollectionViewCell: UICollectionViewCell {
     }
  
     private func commonInit() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.clear
+        viewContent.isHidden = false
     }
     
     func setupWith(_ item: Chord) {

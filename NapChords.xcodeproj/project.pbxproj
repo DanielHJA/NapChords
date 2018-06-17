@@ -10,6 +10,8 @@
 		3FFD6CF7DD1175B7E68CAAC4 /* Pods_NapChordsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B776FBCABBB2F6F6C192C178 /* Pods_NapChordsUITests.framework */; };
 		4A096E8F39A1A81B9B8C1538 /* Pods_NapChordsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */; };
 		7B09F22120D0786200D8CAA2 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09F22020D0786200D8CAA2 /* ActivityView.swift */; };
+		7B116E7D20D6D01C007C92A9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B116E7C20D6D01C007C92A9 /* RealmManager.swift */; };
+		7B116E7F20D6D047007C92A9 /* RealmChordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B116E7E20D6D047007C92A9 /* RealmChordObject.swift */; };
 		7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1210C120CDF31B007FF366 /* CustomViewController.swift */; };
 		7B16156620D42BD5008FA2C7 /* ChordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */; };
 		7B16156820D42D29008FA2C7 /* ChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */; };
@@ -57,6 +59,8 @@
 		2C08D362AE69B390AD8F9FB3 /* Pods-NapChords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapChords.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapChords/Pods-NapChords.release.xcconfig"; sourceTree = "<group>"; };
 		680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChordsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B09F22020D0786200D8CAA2 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		7B116E7C20D6D01C007C92A9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		7B116E7E20D6D047007C92A9 /* RealmChordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChordObject.swift; sourceTree = "<group>"; };
 		7B1210C120CDF31B007FF366 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsViewController.swift; sourceTree = "<group>"; };
 		7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				7B2AB4C820CC3E55001AE012 /* WebService.swift */,
+				7B116E7C20D6D01C007C92A9 /* RealmManager.swift */,
 				7B51E04120D19E2400D498CE /* CustomTableView.swift */,
 				7B2AB4CE20CC3E93001AE012 /* Extensions.swift */,
 				7B2AB4D020CC3E9B001AE012 /* Constants.swift */,
@@ -226,6 +231,7 @@
 			children = (
 				7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */,
 				7B2AB4CA20CC3E71001AE012 /* MusicObject.swift */,
+				7B116E7E20D6D047007C92A9 /* RealmChordObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -498,12 +504,16 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -561,11 +571,13 @@
 				7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */,
 				7B2AB4C920CC3E55001AE012 /* WebService.swift in Sources */,
 				7B2AB4D120CC3E9B001AE012 /* Constants.swift in Sources */,
+				7B116E7D20D6D01C007C92A9 /* RealmManager.swift in Sources */,
 				7B2AB49D20CC3BFC001AE012 /* ViewController.swift in Sources */,
 				7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */,
 				7B09F22120D0786200D8CAA2 /* ActivityView.swift in Sources */,
 				7B56FB6220CD7B7800B595B1 /* SavedViewController.swift in Sources */,
 				7B16D51220D1EBC400B67455 /* SearchSwipeAction.swift in Sources */,
+				7B116E7F20D6D047007C92A9 /* RealmChordObject.swift in Sources */,
 				7B56FB6020CD7B6500B595B1 /* SettingsViewController.swift in Sources */,
 				7B16156620D42BD5008FA2C7 /* ChordsViewController.swift in Sources */,
 			);

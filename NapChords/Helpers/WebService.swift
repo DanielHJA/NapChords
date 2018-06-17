@@ -36,6 +36,10 @@ class WebService {
         let url: String = "\(Constants.ChordsAPI.base)\(query.URLEncode())"
     
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            guard response.response?.statusCode != nil else {
+                failure(.noConnection)
+                return
+            }
             guard let data = response.data else { return }
             
             guard let extractedJSON = data.extractJSON(key: "objects") else { return }

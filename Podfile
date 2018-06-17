@@ -10,6 +10,7 @@ target 'NapChords' do
    pod ‘Alamofire’
    pod ‘ObjectMapper’
    pod ‘Kingfisher’
+   pod ‘RealmSwift’
 
   target 'NapChordsTests' do
     inherit! :search_paths
