@@ -21,8 +21,6 @@ class ChordObject: Mappable {
     var title: String!
     
     required init?(map: Map) {
-       // if map.JSON["body"] == nil { return nil }
-       // if map.JSON["body_chords_html"] == nil { return nil }
         if map.JSON["id"] == nil { return nil }
         if map.JSON["body_stripped"] == nil { return nil }
         if map.JSON["title"] == nil { return nil }
@@ -30,8 +28,6 @@ class ChordObject: Mappable {
     
     func mapping(map: Map) {
         authors <- map["authors"]
-        // body <- map["body"]
-       // bodyHTML <- map["body_chords_html"]
         bodyStripped <- map["body_stripped"]
         chords <- map["chords"]
         link <- (map["permalink"], URLTransform())
@@ -95,11 +91,8 @@ class Instrument: Mappable {
 }
 
 extension ChordObject {
-    func toRealmObject() -> RealmChordObject {
-        let item = RealmChordObject()
-        item.id = self.id
-        item.object = self.toJSONString()!
-        item.date = Date()
-        return item
+    func toRealm() -> RealmChordObject {
+        let object = RealmChordObject(object: self)
+        return object
     }
 }

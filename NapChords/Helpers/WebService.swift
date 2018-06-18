@@ -41,9 +41,7 @@ class WebService {
                 return
             }
             guard let data = response.data else { return }
-            
             guard let extractedJSON = data.extractJSON(key: "objects") else { return }
-            
             guard let result = Mapper<ChordObject>().mapArray(JSONString: extractedJSON) else { 
                 failure(.serializingError)
                 return

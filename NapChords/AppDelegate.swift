@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        try? FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+       
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         let rootViewController = ViewController()
         window = UIWindow(frame: UIScreen.main.bounds)

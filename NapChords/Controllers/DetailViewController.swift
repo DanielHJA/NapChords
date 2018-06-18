@@ -15,7 +15,13 @@ class DetailViewController: UIViewController {
     private var isFullScreen: Bool = false
     
     private lazy var rightBarButtonItem: UIBarButtonItem = {
-        return UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addOrRemoveFavourite))
+        var temp = UIBarButtonItem()
+        if let obj = item {
+            let exist = RealmManager.exists(obj.id)
+            temp = UIBarButtonItem(title: !exist ? "Add" : "Remove", style: .plain, target: self, action: #selector(addOrRemoveFavourite))
+        }
+        temp.isEnabled = false
+        return temp
     }()
     
     private lazy var textView: UITextView = {
@@ -103,7 +109,14 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func addOrRemoveFavourite() {
-        // Add remove from realm
+        guard let object = item else { return }
+        if !RealmManager.exists(object.id) {
+            RealmManager.add(object)
+            rightBarButtonItem.title = "Remove"
+        } else {
+            RealmManager.remove(object.id)
+            rightBarButtonItem.title = "Add"
+        }
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
