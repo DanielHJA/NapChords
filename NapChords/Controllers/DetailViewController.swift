@@ -14,14 +14,12 @@ class DetailViewController: UIViewController {
     var item: ChordObject?
     private var isFullScreen: Bool = false
     
-    private lazy var rightBarButtonItem: UIBarButtonItem = {
-        var temp = UIBarButtonItem()
-        if let obj = item {
-            let exist = RealmManager.exists(obj.id)
-            temp = UIBarButtonItem(title: !exist ? "Add" : "Remove", style: .plain, target: self, action: #selector(addOrRemoveFavourite))
+    private lazy var rightBarButtonItem: UIBarButtonItem? = {
+        if let obj = self.item {
+            return UIBarButtonItem(title: RealmManager.exists(obj.id) ? "Remove" : "Add", style: .plain, target: self, action: #selector(addOrRemoveFavourite))
         }
-        temp.isEnabled = false
-        return temp
+        
+        return nil
     }()
     
     private lazy var textView: UITextView = {
@@ -112,10 +110,10 @@ class DetailViewController: UIViewController {
         guard let object = item else { return }
         if !RealmManager.exists(object.id) {
             RealmManager.add(object)
-            rightBarButtonItem.title = "Remove"
+            rightBarButtonItem?.title = "Remove"
         } else {
             RealmManager.remove(object.id)
-            rightBarButtonItem.title = "Add"
+            rightBarButtonItem?.title = "Add"
         }
     }
     

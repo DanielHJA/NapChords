@@ -8,12 +8,13 @@
 
 import UIKit
 import RealmSwift
+import ObjectMapper
 
 class RealmChordObject: Object {
 
     var id = RealmOptional<Int>()
     @objc dynamic var title: String = ""
-    @objc dynamic var bodyStripped: String = ""
+    @objc dynamic var body: String = ""
     @objc dynamic var link: String = ""
     let chords = List<RealmChords>()
     let authors = List<RealmAuthors>()
@@ -22,13 +23,13 @@ class RealmChordObject: Object {
     @objc open override class func primaryKey() -> String? {
         return "id"
     }
-
+    
     convenience required init(object: ChordObject) {
         self.init()
 
         id.value = object.id
         title = object.title
-        bodyStripped = object.bodyStripped
+        body = object.body
         
         if let link = object.link?.absoluteString {
             self.link = link

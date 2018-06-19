@@ -63,7 +63,15 @@ class ChordsTableViewCell: UITableViewCell {
     
     func setupCellWith(_ object: ChordObject) {
         if let author = object.authors.first?.name {
-            authorLabel.text = author.trimmingCharacters(in: .whitespacesAndNewlines)
+            authorLabel.text = author
+        }
+        
+        songLabel.text = object.title
+    }
+    
+    func setupCellWith(_ object: RealmChordObject) {
+        if let author = object.authors.first?.name {
+            authorLabel.text = author
         }
         
         songLabel.text = object.title

@@ -22,12 +22,15 @@ class ChordObject: Mappable {
     
     required init?(map: Map) {
         if map.JSON["id"] == nil { return nil }
+        if map.JSON["body"] == nil { return nil }
+        if map.JSON["body_chords_html"] == nil { return nil }
         if map.JSON["body_stripped"] == nil { return nil }
         if map.JSON["title"] == nil { return nil }
     }
     
     func mapping(map: Map) {
         authors <- map["authors"]
+        body <- map["body"]
         bodyStripped <- map["body_stripped"]
         chords <- map["chords"]
         link <- (map["permalink"], URLTransform())

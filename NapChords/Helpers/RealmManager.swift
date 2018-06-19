@@ -20,7 +20,8 @@ class RealmManager {
     }
     
     class func exists(_ id: Int) -> Bool {
-        return realm.object(ofType: RealmChordObject.self, forPrimaryKey: id) != nil
+        let object = realm.objects(RealmChordObject.self).filter("id = \(id)")
+        return object.count > 0
     }
     
     class func add(_ object: ChordObject) {
@@ -31,8 +32,18 @@ class RealmManager {
     
     class func remove(_ id: Int) {
         try! realm.write({
-            guard let obj = realm.object(ofType: RealmChordObject.self, forPrimaryKey: id) else { return }
-            realm.delete(obj)
+            if let object = realm.objects(RealmChordObject.self).filter("id = \(id)").first {
+                realm.delete(object.authors)
+                
+                for chord in object.chords {
+                    if let instrument = chord.instrument {
+                        realm.delete(instrument)
+                    }
+                }
+                
+                realm.delete(object.chords)
+                realm.delete(object)
+            }
         })
         
     }
