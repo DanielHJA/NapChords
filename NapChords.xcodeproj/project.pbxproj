@@ -11,11 +11,11 @@
 		4A096E8F39A1A81B9B8C1538 /* Pods_NapChordsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */; };
 		7B09F22120D0786200D8CAA2 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09F22020D0786200D8CAA2 /* ActivityView.swift */; };
 		7B116E7D20D6D01C007C92A9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B116E7C20D6D01C007C92A9 /* RealmManager.swift */; };
-		7B116E7F20D6D047007C92A9 /* RealmChordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B116E7E20D6D047007C92A9 /* RealmChordObject.swift */; };
 		7B1210C220CDF31B007FF366 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1210C120CDF31B007FF366 /* CustomViewController.swift */; };
 		7B16156620D42BD5008FA2C7 /* ChordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */; };
 		7B16156820D42D29008FA2C7 /* ChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */; };
-		7B16D51220D1EBC400B67455 /* SearchSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D51120D1EBC400B67455 /* SearchSwipeAction.swift */; };
+		7B179FE720DAC7210055B674 /* ActivityView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B179FE620DAC7210055B674 /* ActivityView2.swift */; };
+		7B179FE920DAC82C0055B674 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B179FE820DAC82C0055B674 /* Circle.swift */; };
 		7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */; };
 		7B2AB49D20CC3BFC001AE012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB49C20CC3BFC001AE012 /* ViewController.swift */; };
 		7B2AB4A020CC3BFC001AE012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AB49E20CC3BFC001AE012 /* Main.storyboard */; };
@@ -60,11 +60,11 @@
 		680C4DB7841563013C6C72BD /* Pods_NapChordsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapChordsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B09F22020D0786200D8CAA2 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		7B116E7C20D6D01C007C92A9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		7B116E7E20D6D047007C92A9 /* RealmChordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChordObject.swift; sourceTree = "<group>"; };
 		7B1210C120CDF31B007FF366 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7B16156520D42BD5008FA2C7 /* ChordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsViewController.swift; sourceTree = "<group>"; };
 		7B16156720D42D29008FA2C7 /* ChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordCollectionViewCell.swift; sourceTree = "<group>"; };
-		7B16D51120D1EBC400B67455 /* SearchSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSwipeAction.swift; sourceTree = "<group>"; };
+		7B179FE620DAC7210055B674 /* ActivityView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView2.swift; sourceTree = "<group>"; };
+		7B179FE820DAC82C0055B674 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		7B2AB49720CC3BFC001AE012 /* NapChords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NapChords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2AB49A20CC3BFC001AE012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B2AB49C20CC3BFC001AE012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				7B09F22020D0786200D8CAA2 /* ActivityView.swift */,
-				7B16D51120D1EBC400B67455 /* SearchSwipeAction.swift */,
+				7B179FE620DAC7210055B674 /* ActivityView2.swift */,
+				7B179FE820DAC82C0055B674 /* Circle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,7 +232,6 @@
 			children = (
 				7B2AB4CC20CC3E81001AE012 /* ChordObject.swift */,
 				7B2AB4CA20CC3E71001AE012 /* MusicObject.swift */,
-				7B116E7E20D6D047007C92A9 /* RealmChordObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -565,6 +565,7 @@
 				7B2AB4CB20CC3E71001AE012 /* MusicObject.swift in Sources */,
 				7B2AB4CF20CC3E93001AE012 /* Extensions.swift in Sources */,
 				7B56FB6720CD90B400B595B1 /* DetailViewController.swift in Sources */,
+				7B179FE920DAC82C0055B674 /* Circle.swift in Sources */,
 				7B56FB5E20CD7B3B00B595B1 /* SearchViewController.swift in Sources */,
 				7B51E04220D19E2400D498CE /* CustomTableView.swift in Sources */,
 				7B2AB4CD20CC3E81001AE012 /* ChordObject.swift in Sources */,
@@ -576,10 +577,9 @@
 				7B2AB49B20CC3BFC001AE012 /* AppDelegate.swift in Sources */,
 				7B09F22120D0786200D8CAA2 /* ActivityView.swift in Sources */,
 				7B56FB6220CD7B7800B595B1 /* SavedViewController.swift in Sources */,
-				7B16D51220D1EBC400B67455 /* SearchSwipeAction.swift in Sources */,
-				7B116E7F20D6D047007C92A9 /* RealmChordObject.swift in Sources */,
 				7B56FB6020CD7B6500B595B1 /* SettingsViewController.swift in Sources */,
 				7B16156620D42BD5008FA2C7 /* ChordsViewController.swift in Sources */,
+				7B179FE720DAC7210055B674 /* ActivityView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@ import RealmSwift
 
 class ChordsViewController: UIViewController {
 
-    var items: [Chord] = []
+    var items: List<Chord>?
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -63,13 +63,14 @@ extension ChordsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        guard let item = items else { return 0 }
+        return item.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.chordsCell, for: indexPath) as? ChordCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.chordsCell, for: indexPath) as? ChordCollectionViewCell, let item = items else { return UICollectionViewCell() }
         
-        cell.setupWith(items[indexPath.row])
+        cell.setupWith(item[indexPath.row])
         
         return cell
     }

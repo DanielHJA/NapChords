@@ -15,8 +15,17 @@ class DetailViewController: UIViewController {
     private var isFullScreen: Bool = false
     
     private lazy var rightBarButtonItem: UIBarButtonItem? = {
-        if let obj = self.item {
-            return UIBarButtonItem(title: RealmManager.exists(obj.id) ? "Remove" : "Add", style: .plain, target: self, action: #selector(addOrRemoveFavourite))
+        if let object = self.item {
+            var title: String = ""
+            
+            if RealmManager.exists(object.id.value!) && !object.scheduledForDeletion {
+                title = "Remove"
+            } else if RealmManager.exists(object.id.value!) && object.scheduledForDeletion {
+                title = "Add"
+            } else if !RealmManager.exists(object.id.value!) {
+                title = "Add"
+            }
+            return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(addOrRemoveFavourite))
         }
         
         return nil
@@ -64,18 +73,15 @@ class DetailViewController: UIViewController {
             return
         }
         
+        title = item.title
         navigationItem.rightBarButtonItem = rightBarButtonItem
         view.backgroundColor = UIColor.white
         navigationController?.hidesBarsOnSwipe = false
         tabBarController?.tabBar.isHidden = true
-        
-        title = item.title
-
         textView.attributedText = item.body.highlightBracketedText()
         textView.scrollRectToVisible(CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), animated: false)
-        view.addConstraint(textViewHeightConstraint)
-        
         textView.addGestureRecognizer(twoFingerTapRecognizer)
+        view.addConstraint(textViewHeightConstraint)
     }
     
     @objc private func makeFullscreen() {
@@ -108,12 +114,22 @@ class DetailViewController: UIViewController {
     
     @objc private func addOrRemoveFavourite() {
         guard let object = item else { return }
-        if !RealmManager.exists(object.id) {
+        
+        if RealmManager.exists(object.id.value!) && !object.scheduledForDeletion {
+        
+            RealmManager.scheduleForDeletion(object, shouldDelete: true)
+            rightBarButtonItem?.title = "Add"
+        
+        } else if RealmManager.exists(object.id.value!) && object.scheduledForDeletion {
+            
+            RealmManager.scheduleForDeletion(object, shouldDelete: false)
+            rightBarButtonItem?.title = "Remove"
+            
+        } else if !RealmManager.exists(object.id.value!) {
+            
             RealmManager.add(object)
             rightBarButtonItem?.title = "Remove"
-        } else {
-            RealmManager.remove(object.id)
-            rightBarButtonItem?.title = "Add"
+       
         }
     }
     

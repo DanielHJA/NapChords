@@ -8,19 +8,25 @@
 
 import UIKit
 import ObjectMapper
+import RealmSwift
 
-class ChordObject: Mappable {
+class ChordObject: Object, Mappable {
 
-    var authors: [Authors] = []
-    var body: String!
-    var bodyHTML: String!
-    var bodyStripped: String!
-    var chords: [Chord] = []
-    var id: Int!
-    var link: URL?
-    var title: String!
+    var id = RealmOptional<Int>()
+    @objc dynamic var title: String = ""
+    @objc dynamic var body: String = ""
+    @objc dynamic var link: String = ""
+    var chords = List<Chord>()
+    var authors = List<Authors>()
+    @objc dynamic var date = Date()
+    @objc dynamic var scheduledForDeletion: Bool = false
+
+    @objc open override class func primaryKey() -> String? {
+        return "id"
+    }
     
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
         if map.JSON["id"] == nil { return nil }
         if map.JSON["body"] == nil { return nil }
         if map.JSON["body_chords_html"] == nil { return nil }
@@ -31,21 +37,21 @@ class ChordObject: Mappable {
     func mapping(map: Map) {
         authors <- map["authors"]
         body <- map["body"]
-        bodyStripped <- map["body_stripped"]
         chords <- map["chords"]
-        link <- (map["permalink"], URLTransform())
+        link <- map["permalink"]
         title <- map["title"]
-        id <- map["id"]
+        id.value <- map["id"]
     }
     
 }
 
-class Authors: Mappable {
+class Authors: Object, Mappable {
     
-    var name: String!
-    var types: [String] = []
-    
-    required init?(map: Map) {
+    @objc dynamic var name: String = ""
+    var types = List<String>()
+
+    required convenience init?(map: Map) {
+        self.init()
         if map.JSON["name"] == nil { return nil }
     }
     
@@ -55,33 +61,35 @@ class Authors: Mappable {
     }
 }
 
-class Chord: Mappable {
+class Chord: Object, Mappable {
     
-    var code: String!
-    var image: URL?
-    var instrument: Instrument?
-    var name: String!
-    
-    required init?(map: Map) {
+    @objc dynamic var code: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var image: String = ""
+    @objc dynamic var instrument: Instrument?
+
+    required convenience init?(map: Map) {
+        self.init()
         if map.JSON["code"] == nil { return nil }
         if map.JSON["name"] == nil { return nil }
     }
     
     func mapping(map: Map) {
         code <- map["code"]
-        image <- (map["image_url"], URLTransform())
+        image <- map["image_url"]
         instrument <- map["instrument"]
         name <- map["name"]
     }
     
 }
 
-class Instrument: Mappable {
+class Instrument: Object, Mappable {
    
-    var name: String!
-    var tuning: String!
+    @objc dynamic var name: String = ""
+    @objc dynamic var tuning: String = ""
     
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
         if map.JSON["name"] == nil { return nil }
         if map.JSON["tuning"] == nil { return nil }
     }
@@ -93,9 +101,22 @@ class Instrument: Mappable {
     
 }
 
-extension ChordObject {
-    func toRealm() -> RealmChordObject {
-        let object = RealmChordObject(object: self)
-        return object
+private func <- <T: Mappable>(left: List<T>, right: Map)
+{
+    var array: [T]?
+    
+    if right.mappingType == .toJSON
+    {
+        array = Array(left)
+    }
+    
+    array <- right
+    
+    if right.mappingType == .fromJSON
+    {
+        if let theArray = array
+        {
+            left.append(objectsIn: theArray)
+        }
     }
 }

@@ -40,6 +40,12 @@ class ActivityView: UIView {
         temp.textAlignment = .center
         temp.font = UIFont(name: "Helvetica", size: 17.0)
         temp.adjustsFontSizeToFitWidth = true
+        addSubview(temp)
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 20.0).isActive = true
+        temp.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4).isActive = true
+        temp.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        temp.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         return temp
     }()
 
@@ -60,22 +66,16 @@ class ActivityView: UIView {
     
     private func commonInit() {
         backgroundColor = UIColor.clear
-        addSubview(loadingLabel)
-        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        loadingLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 20.0).isActive = true
-        loadingLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4).isActive = true
-        loadingLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        loadingLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     private func loading(_ isLoading: Bool) {
         if isLoading {
             indicatorView.startAnimating()
-            indicatorView.isHidden = !isLoading
         } else {
             indicatorView.stopAnimating()
-            indicatorView.isHidden = !isLoading
         }
+
+        indicatorView.isHidden = !isLoading
     }
     
 }

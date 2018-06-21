@@ -52,7 +52,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
     }
     
     func setupWith(_ item: Chord) {
-        imageView.kf.setImage(with: item.image)
+        imageView.kf.setImage(with: URL(string: item.image))
     }
     
 }

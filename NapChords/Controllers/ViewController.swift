@@ -30,16 +30,15 @@ class ViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Title"
         let tabs = [searchViewController, savedViewController, settingsViewController]
         tabBar.barTintColor = UIColor.black
         viewControllers = tabs
-        title = "Title"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 
 }
 

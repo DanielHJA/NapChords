@@ -43,7 +43,6 @@ class SearchViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.isHidden = false
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,9 +67,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.searchCell, for: indexPath) as? ChordsTableViewCell else { return UITableViewCell() }
-        
         cell.setupCellWith(items[indexPath.row])
-        
         return cell
     }
     
@@ -79,15 +76,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailViewController()
         vc.item = items[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let addRemoveAction = SearchSwipeAction(style: .normal, title: "") { (action, view, completion) in
-            print("Add / remove from database")
-        }
-        addRemoveAction.actionStyle = .add
-        
-        return UISwipeActionsConfiguration(actions: [addRemoveAction])
     }
     
 }

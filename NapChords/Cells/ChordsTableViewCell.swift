@@ -67,14 +67,7 @@ class ChordsTableViewCell: UITableViewCell {
         }
         
         songLabel.text = object.title
-    }
     
-    func setupCellWith(_ object: RealmChordObject) {
-        if let author = object.authors.first?.name {
-            authorLabel.text = author
-        }
-        
-        songLabel.text = object.title
     }
 
 }

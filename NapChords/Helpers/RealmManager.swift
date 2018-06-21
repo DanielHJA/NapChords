@@ -10,29 +10,42 @@ import UIKit
 import RealmSwift
 
 class RealmManager {
+    
+    private static let scheduled: String = "scheduledForDeletion"
 
     private static let realm: Realm = {
         return try! Realm()
     }()
     
-    class func returnAll() -> Results<RealmChordObject> {
-        return realm.objects(RealmChordObject.self)
+    class func returnAll() -> Results<ChordObject> {
+        return realm.objects(ChordObject.self).filter("\(scheduled) = \(false)")
     }
     
     class func exists(_ id: Int) -> Bool {
-        let object = realm.objects(RealmChordObject.self).filter("id = \(id)")
+        let object = realm.objects(ChordObject.self).filter("id = \(id)")
         return object.count > 0
     }
     
     class func add(_ object: ChordObject) {
         try! realm.write({
-            realm.add(object.toRealm())
+            realm.add(object)
         })
     }
     
-    class func remove(_ id: Int) {
+    class func scheduleForDeletion(_ object: ChordObject, shouldDelete: Bool) {
         try! realm.write({
-            if let object = realm.objects(RealmChordObject.self).filter("id = \(id)").first {
+            object.scheduledForDeletion = shouldDelete
+        })
+    }
+    
+    class func deleteScheduled(){
+        let objectsToBeDeleted = realm.objects(ChordObject.self).filter("\(scheduled) = \(true)")
+        remove(objectsToBeDeleted)
+    }
+    
+    class func remove(_ objects: Results<ChordObject>) {
+        try! realm.write({
+            for object in objects {
                 realm.delete(object.authors)
                 
                 for chord in object.chords {
@@ -43,8 +56,9 @@ class RealmManager {
                 
                 realm.delete(object.chords)
                 realm.delete(object)
+                
             }
         })
-        
     }
+    
 }

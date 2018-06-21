@@ -9,9 +9,9 @@
 import UIKit
 import RealmSwift
 
-class SavedViewController: CustomViewController, UITableViewDataSource, UITableViewDelegate {
+class SavedViewController: CustomViewController {
 
-    private var items: Results<RealmChordObject> = {
+    private var items: Results<ChordObject> = {
         return RealmManager.returnAll()
     }()
     
@@ -43,6 +43,23 @@ class SavedViewController: CustomViewController, UITableViewDataSource, UITableV
         }
     }
     
+    private func addOrRemoveObject(_ object: ChordObject) {
+        if RealmManager.exists(object.id.value!) && !object.scheduledForDeletion {
+            RealmManager.scheduleForDeletion(object, shouldDelete: true)
+        } else if RealmManager.exists(object.id.value!) && object.scheduledForDeletion {
+            RealmManager.scheduleForDeletion(object, shouldDelete: false)
+        } else if !RealmManager.exists(object.id.value!) {
+            RealmManager.add(object)
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
+   
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -57,9 +74,7 @@ class SavedViewController: CustomViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.searchCell, for: indexPath) as? ChordsTableViewCell else { return UITableViewCell() }
-        
         cell.setupCellWith(items[indexPath.row])
-        
         return cell
     }
     
@@ -70,8 +85,20 @@ class SavedViewController: CustomViewController, UITableViewDataSource, UITableV
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            self.addOrRemoveObject(self.items[indexPath.row])
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
+            
+            if items.count < 1 {
+                self.tableView.displayEmptyMessage(.noFavourites)
+            }
+        }
     }
 }
-
