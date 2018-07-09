@@ -47,7 +47,11 @@ class WebService {
                 return
             }
             
-            completion(result)
+            if result.count < 1 {
+                failure(.noResults)
+            } else {
+                completion(result)
+            }
         }
     }
 }
